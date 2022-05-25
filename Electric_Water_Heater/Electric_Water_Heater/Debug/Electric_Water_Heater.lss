@@ -1,0 +1,1849 @@
+
+Electric_Water_Heater.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000a0c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  00000a0c  00000aa0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000023  0080006a  0080006a  00000aaa  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000aaa  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000adc  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000210  00000000  00000000  00000b18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001583  00000000  00000000  00000d28  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000b43  00000000  00000000  000022ab  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001079  00000000  00000000  00002dee  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003bc  00000000  00000000  00003e68  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006f0  00000000  00000000  00004224  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000005a9  00000000  00000000  00004914  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000198  00000000  00000000  00004ebd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 23 01 	jmp	0x246	; 0x246 <__vector_3>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 7f 01 	jmp	0x2fe	; 0x2fe <__vector_7>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 5b 01 	jmp	0x2b6	; 0x2b6 <__vector_10>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ec e0       	ldi	r30, 0x0C	; 12
+  68:	fa e0       	ldi	r31, 0x0A	; 10
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 36       	cpi	r26, 0x6A	; 106
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	aa e6       	ldi	r26, 0x6A	; 106
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ad 38       	cpi	r26, 0x8D	; 141
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 af 01 	call	0x35e	; 0x35e <main>
+  8a:	0c 94 04 05 	jmp	0xa08	; 0xa08 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <SSD_send>:
+/*----------------------------------------------------------------------------*-
+SSD_Send. : to Upload data (Number) to the Seven Segment.
+-*----------------------------------------------------------------------------*/
+	
+void SSD_send(uint16_t N){
+	SSD_DATA = Nums[N];
+  92:	80 5a       	subi	r24, 0xA0	; 160
+  94:	9f 4f       	sbci	r25, 0xFF	; 255
+  96:	fc 01       	movw	r30, r24
+  98:	80 81       	ld	r24, Z
+  9a:	82 bb       	out	0x12, r24	; 18
+  9c:	08 95       	ret
+
+0000009e <SSD_enable>:
+SSD_enable() : the 2 seven seg. are multiplexed and works with the same pins.
+So, this function is to enable one and disable the other.
+-*----------------------------------------------------------------------------*/
+
+void SSD_enable(uint8_t disp){
+	if(disp == 1){
+  9e:	81 30       	cpi	r24, 0x01	; 1
+  a0:	39 f4       	brne	.+14     	; 0xb0 <SSD_enable+0x12>
+		set_bit(SSD_ENABLE_PORT,SSD1_ENABLE_PIN);
+  a2:	88 b3       	in	r24, 0x18	; 24
+  a4:	80 64       	ori	r24, 0x40	; 64
+  a6:	88 bb       	out	0x18, r24	; 24
+		clr_bit(SSD_ENABLE_PORT,SSD2_ENABLE_PIN);
+  a8:	88 b3       	in	r24, 0x18	; 24
+  aa:	8f 77       	andi	r24, 0x7F	; 127
+  ac:	88 bb       	out	0x18, r24	; 24
+  ae:	08 95       	ret
+	}
+	else if (disp == 2){
+  b0:	82 30       	cpi	r24, 0x02	; 2
+  b2:	31 f4       	brne	.+12     	; 0xc0 <SSD_enable+0x22>
+		set_bit(SSD_ENABLE_PORT,SSD2_ENABLE_PIN);
+  b4:	88 b3       	in	r24, 0x18	; 24
+  b6:	80 68       	ori	r24, 0x80	; 128
+  b8:	88 bb       	out	0x18, r24	; 24
+		clr_bit(SSD_ENABLE_PORT,SSD1_ENABLE_PIN);
+  ba:	88 b3       	in	r24, 0x18	; 24
+  bc:	8f 7b       	andi	r24, 0xBF	; 191
+  be:	88 bb       	out	0x18, r24	; 24
+  c0:	08 95       	ret
+
+000000c2 <SSD_disable>:
+/*----------------------------------------------------------------------------*-
+SSD_disable() : To disable the two seven segments for some special cases.
+-*----------------------------------------------------------------------------*/
+
+void SSD_disable(void){
+	clr_bit(SSD_ENABLE_PORT,SSD1_ENABLE_PIN);
+  c2:	88 b3       	in	r24, 0x18	; 24
+  c4:	8f 7b       	andi	r24, 0xBF	; 191
+  c6:	88 bb       	out	0x18, r24	; 24
+	clr_bit(SSD_ENABLE_PORT,SSD2_ENABLE_PIN);
+  c8:	88 b3       	in	r24, 0x18	; 24
+  ca:	8f 77       	andi	r24, 0x7F	; 127
+  cc:	88 bb       	out	0x18, r24	; 24
+  ce:	08 95       	ret
+
+000000d0 <SSD_init>:
+uint8_t Nums[10] = {0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F};
+
+void SSD_init(void){
+	
+	// setting Seven Segment Pins as output pins
+	SSD_PORT_DIR = 0xFF;
+  d0:	8f ef       	ldi	r24, 0xFF	; 255
+  d2:	81 bb       	out	0x11, r24	; 17
+	set_bit(SSD_ENABLE_PORT_DIR,SSD1_ENABLE_PIN);
+  d4:	87 b3       	in	r24, 0x17	; 23
+  d6:	80 64       	ori	r24, 0x40	; 64
+  d8:	87 bb       	out	0x17, r24	; 23
+	set_bit(SSD_ENABLE_PORT_DIR,SSD2_ENABLE_PIN);
+  da:	87 b3       	in	r24, 0x17	; 23
+  dc:	80 68       	ori	r24, 0x80	; 128
+  de:	87 bb       	out	0x17, r24	; 23
+	
+	// Seven Segment initially OFF
+	SSD_disable();
+  e0:	0e 94 61 00 	call	0xc2	; 0xc2 <SSD_disable>
+  e4:	08 95       	ret
+
+000000e6 <SSD_turn_off>:
+/*----------------------------------------------------------------------------*-
+SSD_turn_off() : To turn off the Seven Segment in the OFF STATE.
+-*----------------------------------------------------------------------------*/
+
+void SSD_turn_off(void){
+	SSD_DATA = 0x00;
+  e6:	12 ba       	out	0x12, r1	; 18
+  e8:	08 95       	ret
+
+000000ea <SSD_write>:
+
+/*----------------------------------------------------------------------------*-
+SSD_write() : To calculate what to write on each of the two SSDs, and send.
+-*----------------------------------------------------------------------------*/
+
+void SSD_write(uint16_t N){
+  ea:	0f 93       	push	r16
+  ec:	1f 93       	push	r17
+  ee:	cf 93       	push	r28
+  f0:	df 93       	push	r29
+  f2:	ac 01       	movw	r20, r24
+	uint8_t units;
+	uint8_t tens;
+	
+	units = N % 10;
+  f4:	9c 01       	movw	r18, r24
+  f6:	ad ec       	ldi	r26, 0xCD	; 205
+  f8:	bc ec       	ldi	r27, 0xCC	; 204
+  fa:	0e 94 e1 04 	call	0x9c2	; 0x9c2 <__umulhisi3>
+  fe:	ec 01       	movw	r28, r24
+ 100:	d6 95       	lsr	r29
+ 102:	c7 95       	ror	r28
+ 104:	d6 95       	lsr	r29
+ 106:	c7 95       	ror	r28
+ 108:	d6 95       	lsr	r29
+ 10a:	c7 95       	ror	r28
+ 10c:	ce 01       	movw	r24, r28
+ 10e:	88 0f       	add	r24, r24
+ 110:	99 1f       	adc	r25, r25
+ 112:	cc 0f       	add	r28, r28
+ 114:	dd 1f       	adc	r29, r29
+ 116:	cc 0f       	add	r28, r28
+ 118:	dd 1f       	adc	r29, r29
+ 11a:	cc 0f       	add	r28, r28
+ 11c:	dd 1f       	adc	r29, r29
+ 11e:	c8 0f       	add	r28, r24
+ 120:	d9 1f       	adc	r29, r25
+ 122:	ca 01       	movw	r24, r20
+ 124:	8c 1b       	sub	r24, r28
+ 126:	9d 0b       	sbc	r25, r29
+ 128:	ec 01       	movw	r28, r24
+	tens = (int) N / 10;
+ 12a:	ca 01       	movw	r24, r20
+ 12c:	6a e0       	ldi	r22, 0x0A	; 10
+ 12e:	70 e0       	ldi	r23, 0x00	; 0
+ 130:	0e 94 cd 04 	call	0x99a	; 0x99a <__divmodhi4>
+ 134:	8b 01       	movw	r16, r22
+	
+	SSD_enable(DISP1);
+ 136:	81 e0       	ldi	r24, 0x01	; 1
+ 138:	0e 94 4f 00 	call	0x9e	; 0x9e <SSD_enable>
+	SSD_send(units);
+ 13c:	ce 01       	movw	r24, r28
+ 13e:	99 27       	eor	r25, r25
+ 140:	0e 94 49 00 	call	0x92	; 0x92 <SSD_send>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 144:	8f e0       	ldi	r24, 0x0F	; 15
+ 146:	97 e2       	ldi	r25, 0x27	; 39
+ 148:	01 97       	sbiw	r24, 0x01	; 1
+ 14a:	f1 f7       	brne	.-4      	; 0x148 <SSD_write+0x5e>
+ 14c:	00 c0       	rjmp	.+0      	; 0x14e <SSD_write+0x64>
+ 14e:	00 00       	nop
+	_delay_ms(5);
+	
+	SSD_enable(DISP2);
+ 150:	82 e0       	ldi	r24, 0x02	; 2
+ 152:	0e 94 4f 00 	call	0x9e	; 0x9e <SSD_enable>
+	SSD_send(tens);
+ 156:	c8 01       	movw	r24, r16
+ 158:	99 27       	eor	r25, r25
+ 15a:	0e 94 49 00 	call	0x92	; 0x92 <SSD_send>
+ 15e:	8f e0       	ldi	r24, 0x0F	; 15
+ 160:	97 e2       	ldi	r25, 0x27	; 39
+ 162:	01 97       	sbiw	r24, 0x01	; 1
+ 164:	f1 f7       	brne	.-4      	; 0x162 <SSD_write+0x78>
+ 166:	00 c0       	rjmp	.+0      	; 0x168 <SSD_write+0x7e>
+ 168:	00 00       	nop
+	_delay_ms(5);
+ 16a:	df 91       	pop	r29
+ 16c:	cf 91       	pop	r28
+ 16e:	1f 91       	pop	r17
+ 170:	0f 91       	pop	r16
+ 172:	08 95       	ret
+
+00000174 <Buttons_init>:
+for the ON/OFF button.
+-*----------------------------------------------------------------------------*/
+
+void Buttons_init(void){
+	// Setting the pins as INPUT pins
+	clr_bit(B_PORT_DIR,ON_OFF_PIN);
+ 174:	87 b3       	in	r24, 0x17	; 23
+ 176:	8b 7f       	andi	r24, 0xFB	; 251
+ 178:	87 bb       	out	0x17, r24	; 23
+	clr_bit(B_PORT_DIR,UP_PIN);
+ 17a:	87 b3       	in	r24, 0x17	; 23
+ 17c:	8d 7f       	andi	r24, 0xFD	; 253
+ 17e:	87 bb       	out	0x17, r24	; 23
+	clr_bit(B_PORT_DIR,DOWN_PIN);	
+ 180:	87 b3       	in	r24, 0x17	; 23
+ 182:	87 7f       	andi	r24, 0xF7	; 247
+ 184:	87 bb       	out	0x17, r24	; 23
+	
+	// Enable internal Pull-Up Resistor
+	
+	set_bit(B_PORT,ON_OFF_PIN);
+ 186:	88 b3       	in	r24, 0x18	; 24
+ 188:	84 60       	ori	r24, 0x04	; 4
+ 18a:	88 bb       	out	0x18, r24	; 24
+	set_bit(B_PORT,UP_PIN);
+ 18c:	88 b3       	in	r24, 0x18	; 24
+ 18e:	82 60       	ori	r24, 0x02	; 2
+ 190:	88 bb       	out	0x18, r24	; 24
+	set_bit(B_PORT,DOWN_PIN);
+ 192:	88 b3       	in	r24, 0x18	; 24
+ 194:	88 60       	ori	r24, 0x08	; 8
+ 196:	88 bb       	out	0x18, r24	; 24
+	
+	// This Following Section is for the external interrupt
+	// assigned to the ON/OFF Button.
+	
+	// Enable Global Interrupt bit
+	sei();
+ 198:	78 94       	sei
+	
+	// Trigger with Rising Edge
+	set_bit(MCUCSR,ISC2);
+ 19a:	84 b7       	in	r24, 0x34	; 52
+ 19c:	80 64       	ori	r24, 0x40	; 64
+ 19e:	84 bf       	out	0x34, r24	; 52
+	
+	// Enable INT2 (External Interrupt)
+	set_bit(GICR,INT2);
+ 1a0:	8b b7       	in	r24, 0x3b	; 59
+ 1a2:	80 62       	ori	r24, 0x20	; 32
+ 1a4:	8b bf       	out	0x3b, r24	; 59
+ 1a6:	08 95       	ret
+
+000001a8 <UP_pressed>:
+UP_pressed() : Check if UP button is pressed or not and return the result.
+-*----------------------------------------------------------------------------*/
+
+unsigned char UP_pressed(void){
+	// Check if pressed for the first time
+	if(!(read_bit(PINB,UP_PIN))){
+ 1a8:	96 b3       	in	r25, 0x16	; 22
+ 1aa:	89 2f       	mov	r24, r25
+ 1ac:	82 70       	andi	r24, 0x02	; 2
+ 1ae:	91 fd       	sbrc	r25, 1
+ 1b0:	0d c0       	rjmp	.+26     	; 0x1cc <UP_pressed+0x24>
+ 1b2:	2f ef       	ldi	r18, 0xFF	; 255
+ 1b4:	30 e7       	ldi	r19, 0x70	; 112
+ 1b6:	92 e0       	ldi	r25, 0x02	; 2
+ 1b8:	21 50       	subi	r18, 0x01	; 1
+ 1ba:	30 40       	sbci	r19, 0x00	; 0
+ 1bc:	90 40       	sbci	r25, 0x00	; 0
+ 1be:	e1 f7       	brne	.-8      	; 0x1b8 <UP_pressed+0x10>
+ 1c0:	00 c0       	rjmp	.+0      	; 0x1c2 <UP_pressed+0x1a>
+ 1c2:	00 00       	nop
+		// wait for 50 ms to make sure it's pressed (debouncing solution)
+		_delay_ms(DEBOUNCE_INTERVAL);
+		
+		// check one more time
+		if (!(read_bit(PINB,UP_PIN))){
+ 1c4:	b1 99       	sbic	0x16, 1	; 22
+ 1c6:	03 c0       	rjmp	.+6      	; 0x1ce <UP_pressed+0x26>
+			return PRESSED;
+ 1c8:	81 e0       	ldi	r24, 0x01	; 1
+ 1ca:	08 95       	ret
+		}
+		else return NOT_PRESSED;
+	}
+	else return NOT_PRESSED;	
+ 1cc:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 1ce:	08 95       	ret
+
+000001d0 <DOWN_pressed>:
+DOWN_pressed() : Check if DOWN button is pressed or not and return the result.
+-*----------------------------------------------------------------------------*/
+
+unsigned char DOWN_pressed(void){
+	// Check if pressed for the first time
+	if(!(read_bit(PINB,DOWN_PIN))){
+ 1d0:	96 b3       	in	r25, 0x16	; 22
+ 1d2:	89 2f       	mov	r24, r25
+ 1d4:	88 70       	andi	r24, 0x08	; 8
+ 1d6:	93 fd       	sbrc	r25, 3
+ 1d8:	0d c0       	rjmp	.+26     	; 0x1f4 <DOWN_pressed+0x24>
+ 1da:	2f ef       	ldi	r18, 0xFF	; 255
+ 1dc:	30 e7       	ldi	r19, 0x70	; 112
+ 1de:	92 e0       	ldi	r25, 0x02	; 2
+ 1e0:	21 50       	subi	r18, 0x01	; 1
+ 1e2:	30 40       	sbci	r19, 0x00	; 0
+ 1e4:	90 40       	sbci	r25, 0x00	; 0
+ 1e6:	e1 f7       	brne	.-8      	; 0x1e0 <DOWN_pressed+0x10>
+ 1e8:	00 c0       	rjmp	.+0      	; 0x1ea <DOWN_pressed+0x1a>
+ 1ea:	00 00       	nop
+		// wait for 50 ms to make sure it's pressed (debouncing solution)
+		_delay_ms(DEBOUNCE_INTERVAL);
+	
+		// check one more time
+		if (!(read_bit(PINB,DOWN_PIN))){
+ 1ec:	b3 99       	sbic	0x16, 3	; 22
+ 1ee:	03 c0       	rjmp	.+6      	; 0x1f6 <DOWN_pressed+0x26>
+			return PRESSED;
+ 1f0:	81 e0       	ldi	r24, 0x01	; 1
+ 1f2:	08 95       	ret
+		}
+		else return NOT_PRESSED;
+	}
+	else return NOT_PRESSED;
+ 1f4:	80 e0       	ldi	r24, 0x00	; 0
+}
+ 1f6:	08 95       	ret
+
+000001f8 <heat_init>:
+
+#include "..\..\std_macros.h"
+#include "Cool_Heat_Elements.h"
+
+void heat_init(void){
+	set_bit(HEAT_PORT_DIR,HEAT_PIN);
+ 1f8:	87 b3       	in	r24, 0x17	; 23
+ 1fa:	80 61       	ori	r24, 0x10	; 16
+ 1fc:	87 bb       	out	0x17, r24	; 23
+ 1fe:	08 95       	ret
+
+00000200 <cool_init>:
+}
+
+void cool_init(void){
+	set_bit(COOL_PORT_DIR,COOL_PIN);
+ 200:	87 b3       	in	r24, 0x17	; 23
+ 202:	80 62       	ori	r24, 0x20	; 32
+ 204:	87 bb       	out	0x17, r24	; 23
+ 206:	08 95       	ret
+
+00000208 <heat_start>:
+/*----------------------------------------------------------------------------*-
+Heater/Cooler Start : to start the Heater OR the Cooler.
+-*----------------------------------------------------------------------------*/
+
+void heat_start(void){
+	set_bit(HEAT_PORT,HEAT_PIN);
+ 208:	88 b3       	in	r24, 0x18	; 24
+ 20a:	80 61       	ori	r24, 0x10	; 16
+ 20c:	88 bb       	out	0x18, r24	; 24
+ 20e:	08 95       	ret
+
+00000210 <cool_start>:
+}
+
+void cool_start(void){
+	set_bit(COOL_PORT,COOL_PIN);
+ 210:	88 b3       	in	r24, 0x18	; 24
+ 212:	80 62       	ori	r24, 0x20	; 32
+ 214:	88 bb       	out	0x18, r24	; 24
+ 216:	08 95       	ret
+
+00000218 <heat_stop>:
+/*----------------------------------------------------------------------------*-
+Heater/Cooler Stop : to stop Heater OR Cooler from working.
+-*----------------------------------------------------------------------------*/
+
+void heat_stop(void){
+	clr_bit(HEAT_PORT,HEAT_PIN);
+ 218:	88 b3       	in	r24, 0x18	; 24
+ 21a:	8f 7e       	andi	r24, 0xEF	; 239
+ 21c:	88 bb       	out	0x18, r24	; 24
+ 21e:	08 95       	ret
+
+00000220 <cool_stop>:
+}
+
+void cool_stop(void){
+	clr_bit(COOL_PORT,COOL_PIN);
+ 220:	88 b3       	in	r24, 0x18	; 24
+ 222:	8f 7d       	andi	r24, 0xDF	; 223
+ 224:	88 bb       	out	0x18, r24	; 24
+ 226:	08 95       	ret
+
+00000228 <led_init>:
+void led_init(void){
+	
+	// PIN 0 in the port is an output pin
+	// the LED pin is initially off
+	
+	set_bit(LED_PORT_DIR,LED_PIN);
+ 228:	87 b3       	in	r24, 0x17	; 23
+ 22a:	81 60       	ori	r24, 0x01	; 1
+ 22c:	87 bb       	out	0x17, r24	; 23
+	clr_bit(LED_PORT,LED_PIN);
+ 22e:	88 b3       	in	r24, 0x18	; 24
+ 230:	8e 7f       	andi	r24, 0xFE	; 254
+ 232:	88 bb       	out	0x18, r24	; 24
+ 234:	08 95       	ret
+
+00000236 <led_on>:
+/*----------------------------------------------------------------------------*-
+LED control : to turn on/off or toggle the LED.
+-*----------------------------------------------------------------------------*/
+
+void led_on(void){
+	set_bit(LED_PORT,LED_PIN);
+ 236:	88 b3       	in	r24, 0x18	; 24
+ 238:	81 60       	ori	r24, 0x01	; 1
+ 23a:	88 bb       	out	0x18, r24	; 24
+ 23c:	08 95       	ret
+
+0000023e <led_off>:
+}
+
+void led_off(void){
+	clr_bit(LED_PORT,LED_PIN);
+ 23e:	88 b3       	in	r24, 0x18	; 24
+ 240:	8e 7f       	andi	r24, 0xFE	; 254
+ 242:	88 bb       	out	0x18, r24	; 24
+ 244:	08 95       	ret
+
+00000246 <__vector_3>:
+
+/*----------------------------------------------------------------------------*-
+ON/OFF_Button_ISR : To switch between ON and OFF States.
+-*----------------------------------------------------------------------------*/
+
+ISR(INT2_vect){
+ 246:	1f 92       	push	r1
+ 248:	0f 92       	push	r0
+ 24a:	0f b6       	in	r0, 0x3f	; 63
+ 24c:	0f 92       	push	r0
+ 24e:	11 24       	eor	r1, r1
+ 250:	2f 93       	push	r18
+ 252:	3f 93       	push	r19
+ 254:	4f 93       	push	r20
+ 256:	5f 93       	push	r21
+ 258:	6f 93       	push	r22
+ 25a:	7f 93       	push	r23
+ 25c:	8f 93       	push	r24
+ 25e:	9f 93       	push	r25
+ 260:	af 93       	push	r26
+ 262:	bf 93       	push	r27
+ 264:	ef 93       	push	r30
+ 266:	ff 93       	push	r31
+	if(Curr_state==OFF){
+ 268:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <Curr_state>
+ 26c:	81 11       	cpse	r24, r1
+ 26e:	0d c0       	rjmp	.+26     	; 0x28a <__vector_3+0x44>
+		Curr_state = ON;
+ 270:	81 e0       	ldi	r24, 0x01	; 1
+ 272:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <Curr_state>
+		desired_temp = EEPROM_read(0x0000);
+ 276:	80 e0       	ldi	r24, 0x00	; 0
+ 278:	90 e0       	ldi	r25, 0x00	; 0
+ 27a:	0e 94 f3 01 	call	0x3e6	; 0x3e6 <EEPROM_read>
+ 27e:	90 e0       	ldi	r25, 0x00	; 0
+ 280:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <desired_temp+0x1>
+ 284:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <desired_temp>
+ 288:	05 c0       	rjmp	.+10     	; 0x294 <__vector_3+0x4e>
+	}
+	else if (Curr_state==ON || Curr_state==SETTING){
+ 28a:	81 50       	subi	r24, 0x01	; 1
+ 28c:	82 30       	cpi	r24, 0x02	; 2
+ 28e:	10 f4       	brcc	.+4      	; 0x294 <__vector_3+0x4e>
+		Curr_state = OFF;
+ 290:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <Curr_state>
+	}
+}
+ 294:	ff 91       	pop	r31
+ 296:	ef 91       	pop	r30
+ 298:	bf 91       	pop	r27
+ 29a:	af 91       	pop	r26
+ 29c:	9f 91       	pop	r25
+ 29e:	8f 91       	pop	r24
+ 2a0:	7f 91       	pop	r23
+ 2a2:	6f 91       	pop	r22
+ 2a4:	5f 91       	pop	r21
+ 2a6:	4f 91       	pop	r20
+ 2a8:	3f 91       	pop	r19
+ 2aa:	2f 91       	pop	r18
+ 2ac:	0f 90       	pop	r0
+ 2ae:	0f be       	out	0x3f, r0	; 63
+ 2b0:	0f 90       	pop	r0
+ 2b2:	1f 90       	pop	r1
+ 2b4:	18 95       	reti
+
+000002b6 <__vector_10>:
+/*----------------------------------------------------------------------------*-
+TIMER0_ISR (A) : It triggers the ISR every 100ms. So, it makes the temperature
+measure flag equals one to enable the ADC to do the work.
+-*----------------------------------------------------------------------------*/
+
+ISR(TIMER0_COMP_vect){
+ 2b6:	1f 92       	push	r1
+ 2b8:	0f 92       	push	r0
+ 2ba:	0f b6       	in	r0, 0x3f	; 63
+ 2bc:	0f 92       	push	r0
+ 2be:	11 24       	eor	r1, r1
+ 2c0:	2f 93       	push	r18
+ 2c2:	8f 93       	push	r24
+ 2c4:	9f 93       	push	r25
+	set_counter_timer0++;
+ 2c6:	90 91 77 00 	lds	r25, 0x0077	; 0x800077 <set_counter_timer0>
+ 2ca:	9f 5f       	subi	r25, 0xFF	; 255
+ 2cc:	90 93 77 00 	sts	0x0077, r25	; 0x800077 <set_counter_timer0>
+	if(set_counter_timer0%3==0)
+ 2d0:	8b ea       	ldi	r24, 0xAB	; 171
+ 2d2:	98 9f       	mul	r25, r24
+ 2d4:	81 2d       	mov	r24, r1
+ 2d6:	11 24       	eor	r1, r1
+ 2d8:	86 95       	lsr	r24
+ 2da:	28 2f       	mov	r18, r24
+ 2dc:	22 0f       	add	r18, r18
+ 2de:	82 0f       	add	r24, r18
+ 2e0:	98 13       	cpse	r25, r24
+ 2e2:	05 c0       	rjmp	.+10     	; 0x2ee <__vector_10+0x38>
+	{
+		temp_measure_f = 1;
+ 2e4:	81 e0       	ldi	r24, 0x01	; 1
+ 2e6:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <temp_measure_f>
+		set_counter_timer0=0;
+ 2ea:	10 92 77 00 	sts	0x0077, r1	; 0x800077 <set_counter_timer0>
+	}
+	
+}
+ 2ee:	9f 91       	pop	r25
+ 2f0:	8f 91       	pop	r24
+ 2f2:	2f 91       	pop	r18
+ 2f4:	0f 90       	pop	r0
+ 2f6:	0f be       	out	0x3f, r0	; 63
+ 2f8:	0f 90       	pop	r0
+ 2fa:	1f 90       	pop	r1
+ 2fc:	18 95       	reti
+
+000002fe <__vector_7>:
+TIMER1_ISR (B) : It triggers the ISR every 1 second. So, it toggles the
+toggle flag for the Seven Segment. and counts to keep it in
+ON_STATE if nothing is pressed during in ON or SETTING modes for 5 secs.
+-*----------------------------------------------------------------------------*/
+
+ISR(TIMER1_COMPA_vect){
+ 2fe:	1f 92       	push	r1
+ 300:	0f 92       	push	r0
+ 302:	0f b6       	in	r0, 0x3f	; 63
+ 304:	0f 92       	push	r0
+ 306:	11 24       	eor	r1, r1
+ 308:	2f 93       	push	r18
+ 30a:	3f 93       	push	r19
+ 30c:	8f 93       	push	r24
+ 30e:	9f 93       	push	r25
+	if ((Curr_state==SETTING) || (Curr_state==ON)){
+ 310:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <Curr_state>
+ 314:	81 50       	subi	r24, 0x01	; 1
+ 316:	82 30       	cpi	r24, 0x02	; 2
+ 318:	c8 f4       	brcc	.+50     	; 0x34c <__vector_7+0x4e>
+		setting_counter++;
+ 31a:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <setting_counter>
+ 31e:	8f 5f       	subi	r24, 0xFF	; 255
+ 320:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <setting_counter>
+		if(setting_counter % 2 == 0){
+ 324:	80 fd       	sbrc	r24, 0
+ 326:	0d c0       	rjmp	.+26     	; 0x342 <__vector_7+0x44>
+			toggle_f ^= 1;
+ 328:	20 91 70 00 	lds	r18, 0x0070	; 0x800070 <toggle_f>
+ 32c:	30 91 71 00 	lds	r19, 0x0071	; 0x800071 <toggle_f+0x1>
+ 330:	91 e0       	ldi	r25, 0x01	; 1
+ 332:	29 27       	eor	r18, r25
+ 334:	30 93 71 00 	sts	0x0071, r19	; 0x800071 <toggle_f+0x1>
+ 338:	20 93 70 00 	sts	0x0070, r18	; 0x800070 <toggle_f>
+			avg_flag=1;
+ 33c:	91 e0       	ldi	r25, 0x01	; 1
+ 33e:	90 93 76 00 	sts	0x0076, r25	; 0x800076 <avg_flag>
+		}
+		if (setting_counter ==10){
+ 342:	8a 30       	cpi	r24, 0x0A	; 10
+ 344:	19 f4       	brne	.+6      	; 0x34c <__vector_7+0x4e>
+			
+			// Write the new desired temperature in EEPROM
+			Curr_state = ON;
+ 346:	81 e0       	ldi	r24, 0x01	; 1
+ 348:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <Curr_state>
+		}
+	}
+}
+ 34c:	9f 91       	pop	r25
+ 34e:	8f 91       	pop	r24
+ 350:	3f 91       	pop	r19
+ 352:	2f 91       	pop	r18
+ 354:	0f 90       	pop	r0
+ 356:	0f be       	out	0x3f, r0	; 63
+ 358:	0f 90       	pop	r0
+ 35a:	1f 90       	pop	r1
+ 35c:	18 95       	reti
+
+0000035e <main>:
+-*----------------------------------------------------------------------------*/
+
+
+int main(void){
+	
+	sys_init();
+ 35e:	0e 94 58 03 	call	0x6b0	; 0x6b0 <sys_init>
+	
+	while(1){
+		switch (Curr_state){
+ 362:	80 91 6d 00 	lds	r24, 0x006D	; 0x80006d <Curr_state>
+ 366:	81 30       	cpi	r24, 0x01	; 1
+ 368:	21 f0       	breq	.+8      	; 0x372 <main+0x14>
+ 36a:	30 f0       	brcs	.+12     	; 0x378 <main+0x1a>
+ 36c:	82 30       	cpi	r24, 0x02	; 2
+ 36e:	39 f0       	breq	.+14     	; 0x37e <main+0x20>
+ 370:	f8 cf       	rjmp	.-16     	; 0x362 <main+0x4>
+			case ON:{
+				ON_state();
+ 372:	0e 94 e8 02 	call	0x5d0	; 0x5d0 <ON_state>
+				break;
+ 376:	f5 cf       	rjmp	.-22     	; 0x362 <main+0x4>
+			}
+			case OFF:{
+				OFF_state();
+ 378:	0e 94 98 03 	call	0x730	; 0x730 <OFF_state>
+				break;
+ 37c:	f2 cf       	rjmp	.-28     	; 0x362 <main+0x4>
+			}
+			case SETTING:{
+				SET_state();
+ 37e:	0e 94 39 02 	call	0x472	; 0x472 <SET_state>
+				break;
+ 382:	ef cf       	rjmp	.-34     	; 0x362 <main+0x4>
+
+00000384 <ADC_init>:
+
+void ADC_init(){
+	
+	// Choosing reference voltage option.
+	// the AVCC pin with a capacitor at the AREF pin.
+	set_bit(ADMUX,REFS0);
+ 384:	87 b1       	in	r24, 0x07	; 7
+ 386:	80 64       	ori	r24, 0x40	; 64
+ 388:	87 b9       	out	0x07, r24	; 7
+	
+	// Choosing Channel One (Single Ended In.) at A0 pin.
+	clr_bit(ADMUX,MUX0);
+ 38a:	87 b1       	in	r24, 0x07	; 7
+ 38c:	8e 7f       	andi	r24, 0xFE	; 254
+ 38e:	87 b9       	out	0x07, r24	; 7
+	clr_bit(ADMUX,MUX1);
+ 390:	87 b1       	in	r24, 0x07	; 7
+ 392:	8d 7f       	andi	r24, 0xFD	; 253
+ 394:	87 b9       	out	0x07, r24	; 7
+	clr_bit(ADMUX,MUX2);
+ 396:	87 b1       	in	r24, 0x07	; 7
+ 398:	8b 7f       	andi	r24, 0xFB	; 251
+ 39a:	87 b9       	out	0x07, r24	; 7
+	clr_bit(ADMUX,MUX3);
+ 39c:	87 b1       	in	r24, 0x07	; 7
+ 39e:	87 7f       	andi	r24, 0xF7	; 247
+ 3a0:	87 b9       	out	0x07, r24	; 7
+	clr_bit(ADMUX,MUX4);
+ 3a2:	87 b1       	in	r24, 0x07	; 7
+ 3a4:	8f 7e       	andi	r24, 0xEF	; 239
+ 3a6:	87 b9       	out	0x07, r24	; 7
+	
+	// Choosing the Data to be Right Adjusted in the Data Reg.
+	clr_bit(ADMUX,ADLAR);
+ 3a8:	87 b1       	in	r24, 0x07	; 7
+ 3aa:	8f 7d       	andi	r24, 0xDF	; 223
+ 3ac:	87 b9       	out	0x07, r24	; 7
+	
+	// Choosing Prescaler for the ADC clock.
+	// the following is choosing (2) as a Prescaler.
+	set_bit(ADCSRA,ADPS0);
+ 3ae:	86 b1       	in	r24, 0x06	; 6
+ 3b0:	81 60       	ori	r24, 0x01	; 1
+ 3b2:	86 b9       	out	0x06, r24	; 6
+	clr_bit(ADCSRA,ADPS1);
+ 3b4:	86 b1       	in	r24, 0x06	; 6
+ 3b6:	8d 7f       	andi	r24, 0xFD	; 253
+ 3b8:	86 b9       	out	0x06, r24	; 6
+	clr_bit(ADCSRA,ADPS2);
+ 3ba:	86 b1       	in	r24, 0x06	; 6
+ 3bc:	8b 7f       	andi	r24, 0xFB	; 251
+ 3be:	86 b9       	out	0x06, r24	; 6
+	
+	// Enable the ADC
+	set_bit(ADCSRA,ADEN);
+ 3c0:	86 b1       	in	r24, 0x06	; 6
+ 3c2:	80 68       	ori	r24, 0x80	; 128
+ 3c4:	86 b9       	out	0x06, r24	; 6
+ 3c6:	08 95       	ret
+
+000003c8 <ADC_read>:
+uint16_t ADC_read(){
+	
+	uint16_t data;
+	
+	// Start Conversion
+	set_bit(ADCSRA,ADSC);
+ 3c8:	86 b1       	in	r24, 0x06	; 6
+ 3ca:	80 64       	ori	r24, 0x40	; 64
+ 3cc:	86 b9       	out	0x06, r24	; 6
+	
+	// Wait for flag to be set.
+	// Indication of finished conversion
+	while(is_bit_clr(ADCSRA,ADIF));
+ 3ce:	30 9b       	sbis	0x06, 0	; 6
+ 3d0:	fe cf       	rjmp	.-4      	; 0x3ce <ADC_read+0x6>
+	
+	// Read Data from the ADC Data Register
+	// Read the Low register first!
+	data = ADCL;
+ 3d2:	34 b1       	in	r19, 0x04	; 4
+	data |= (ADCH<<8);
+ 3d4:	85 b1       	in	r24, 0x05	; 5
+ 3d6:	90 e0       	ldi	r25, 0x00	; 0
+ 3d8:	98 2f       	mov	r25, r24
+ 3da:	88 27       	eor	r24, r24
+	
+	// Clear Flag (As we are not using the interrupt)
+	// It won't be cleared automatically!
+	set_bit(ADCSRA,ADIF);
+ 3dc:	26 b1       	in	r18, 0x06	; 6
+ 3de:	20 61       	ori	r18, 0x10	; 16
+ 3e0:	26 b9       	out	0x06, r18	; 6
+	
+	return data;	
+ 3e2:	83 2b       	or	r24, r19
+ 3e4:	08 95       	ret
+
+000003e6 <EEPROM_read>:
+EEPROM_read() : To read the data from the EEPROM given the Address.
+-*----------------------------------------------------------------------------*/
+
+unsigned char EEPROM_read(const unsigned short addr){
+	// Setup Address Register
+	EEARL = (char)addr;
+ 3e6:	8e bb       	out	0x1e, r24	; 30
+	EEARH = (char)(addr>>8);
+ 3e8:	9f bb       	out	0x1f, r25	; 31
+	
+	// Start Reading
+	set_bit(EECR,EERE);
+ 3ea:	8c b3       	in	r24, 0x1c	; 28
+ 3ec:	81 60       	ori	r24, 0x01	; 1
+ 3ee:	8c bb       	out	0x1c, r24	; 28
+	
+	// Return Data
+	return EEDR;
+ 3f0:	8d b3       	in	r24, 0x1d	; 29
+}
+ 3f2:	08 95       	ret
+
+000003f4 <EEPROM_write>:
+
+void EEPROM_write(const unsigned short addr, unsigned char data){
+	unsigned char INT_EN=0;
+		
+	// Setup Address Register
+	EEARL = (char)addr;
+ 3f4:	8e bb       	out	0x1e, r24	; 30
+	EEARH = (char)(addr>>8);
+ 3f6:	9f bb       	out	0x1f, r25	; 31
+	
+	// Put Data in Data Register
+	EEDR = data;
+ 3f8:	6d bb       	out	0x1d, r22	; 29
+	
+	// Disable Interrupts to work fine
+	if(((SREG&(1<<7))>>7)==1){
+ 3fa:	0f b6       	in	r0, 0x3f	; 63
+ 3fc:	07 fe       	sbrs	r0, 7
+ 3fe:	05 c0       	rjmp	.+10     	; 0x40a <__EEPROM_REGION_LENGTH__+0xa>
+		INT_EN = 1;
+		clr_bit(SREG,7);
+ 400:	8f b7       	in	r24, 0x3f	; 63
+ 402:	8f 77       	andi	r24, 0x7F	; 127
+ 404:	8f bf       	out	0x3f, r24	; 63
+	// Put Data in Data Register
+	EEDR = data;
+	
+	// Disable Interrupts to work fine
+	if(((SREG&(1<<7))>>7)==1){
+		INT_EN = 1;
+ 406:	91 e0       	ldi	r25, 0x01	; 1
+ 408:	01 c0       	rjmp	.+2      	; 0x40c <__EEPROM_REGION_LENGTH__+0xc>
+/*----------------------------------------------------------------------------*-
+EEPROM_write() : to write data in the EEPROM given the address and the data.
+-*----------------------------------------------------------------------------*/
+
+void EEPROM_write(const unsigned short addr, unsigned char data){
+	unsigned char INT_EN=0;
+ 40a:	90 e0       	ldi	r25, 0x00	; 0
+		INT_EN = 1;
+		clr_bit(SREG,7);
+	}
+	
+	// Start Writing
+	set_bit(EECR,EEMWE);
+ 40c:	8c b3       	in	r24, 0x1c	; 28
+ 40e:	84 60       	ori	r24, 0x04	; 4
+ 410:	8c bb       	out	0x1c, r24	; 28
+	set_bit(EECR,EEWE);
+ 412:	8c b3       	in	r24, 0x1c	; 28
+ 414:	82 60       	ori	r24, 0x02	; 2
+ 416:	8c bb       	out	0x1c, r24	; 28
+	while(((EECR&(1<<EEWE))>>EEWE)==1);
+ 418:	e1 99       	sbic	0x1c, 1	; 28
+ 41a:	fe cf       	rjmp	.-4      	; 0x418 <__EEPROM_REGION_LENGTH__+0x18>
+	
+	// Back
+	if (INT_EN==1)
+ 41c:	91 30       	cpi	r25, 0x01	; 1
+ 41e:	19 f4       	brne	.+6      	; 0x426 <__EEPROM_REGION_LENGTH__+0x26>
+	{
+		set_bit(SREG,7);
+ 420:	8f b7       	in	r24, 0x3f	; 63
+ 422:	80 68       	ori	r24, 0x80	; 128
+ 424:	8f bf       	out	0x3f, r24	; 63
+ 426:	08 95       	ret
+
+00000428 <timer1_init>:
+-*----------------------------------------------------------------------------*/
+
+void timer1_INT_disable(){
+	
+	// Disable Interrupts when Comparing with values A and B
+	clr_bit(TIMSK,OCIE1A);
+ 428:	8e b5       	in	r24, 0x2e	; 46
+ 42a:	88 60       	ori	r24, 0x08	; 8
+ 42c:	8e bd       	out	0x2e, r24	; 46
+ 42e:	1b bc       	out	0x2b, r1	; 43
+ 430:	82 e6       	ldi	r24, 0x62	; 98
+ 432:	8a bd       	out	0x2a, r24	; 42
+ 434:	8e b5       	in	r24, 0x2e	; 46
+ 436:	81 60       	ori	r24, 0x01	; 1
+ 438:	8e bd       	out	0x2e, r24	; 46
+ 43a:	8e b5       	in	r24, 0x2e	; 46
+ 43c:	82 60       	ori	r24, 0x02	; 2
+ 43e:	8e bd       	out	0x2e, r24	; 46
+ 440:	8e b5       	in	r24, 0x2e	; 46
+ 442:	8b 7f       	andi	r24, 0xFB	; 251
+ 444:	8e bd       	out	0x2e, r24	; 46
+ 446:	78 94       	sei
+ 448:	08 95       	ret
+
+0000044a <timer0_init>:
+ 44a:	83 b7       	in	r24, 0x33	; 51
+ 44c:	88 60       	ori	r24, 0x08	; 8
+ 44e:	83 bf       	out	0x33, r24	; 51
+ 450:	8a ef       	ldi	r24, 0xFA	; 250
+ 452:	8c bf       	out	0x3c, r24	; 60
+ 454:	83 b7       	in	r24, 0x33	; 51
+ 456:	81 60       	ori	r24, 0x01	; 1
+ 458:	83 bf       	out	0x33, r24	; 51
+ 45a:	83 b7       	in	r24, 0x33	; 51
+ 45c:	84 60       	ori	r24, 0x04	; 4
+ 45e:	83 bf       	out	0x33, r24	; 51
+ 460:	78 94       	sei
+ 462:	89 b7       	in	r24, 0x39	; 57
+ 464:	82 60       	ori	r24, 0x02	; 2
+ 466:	89 bf       	out	0x39, r24	; 57
+ 468:	08 95       	ret
+
+0000046a <timer1_INT_enable>:
+-*----------------------------------------------------------------------------*/
+
+void timer1_INT_enable(){
+	
+	// Enable Interrupts when Comparing with values A and B
+	set_bit(TIMSK,OCIE1A);
+ 46a:	89 b7       	in	r24, 0x39	; 57
+ 46c:	80 61       	ori	r24, 0x10	; 16
+ 46e:	89 bf       	out	0x39, r24	; 57
+ 470:	08 95       	ret
+
+00000472 <SET_state>:
+/*----------------------------------------------------------------------------*-
+Setting_state : 
+-*----------------------------------------------------------------------------*/
+
+void SET_state(void){
+	heat_stop();
+ 472:	0e 94 0c 01 	call	0x218	; 0x218 <heat_stop>
+	cool_stop();
+ 476:	0e 94 10 01 	call	0x220	; 0x220 <cool_stop>
+	led_off();
+ 47a:	0e 94 1f 01 	call	0x23e	; 0x23e <led_off>
+	
+	// to toggle the seven segment
+	// while writing the desired temperature
+	
+	if(toggle_f == 1){
+ 47e:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <toggle_f>
+ 482:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <toggle_f+0x1>
+ 486:	01 97       	sbiw	r24, 0x01	; 1
+ 488:	39 f4       	brne	.+14     	; 0x498 <SET_state+0x26>
+		SSD_write(desired_temp);
+ 48a:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <desired_temp>
+ 48e:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <desired_temp+0x1>
+ 492:	0e 94 75 00 	call	0xea	; 0xea <SSD_write>
+ 496:	02 c0       	rjmp	.+4      	; 0x49c <SET_state+0x2a>
+	}
+	else{
+		SSD_turn_off();
+ 498:	0e 94 73 00 	call	0xe6	; 0xe6 <SSD_turn_off>
+	}
+	
+	// if UP or DOWN pressed, change the desired temp
+	// as long as it's still in range
+	
+	if((UP_pressed() == PRESSED) && (desired_temp < MAX_TEMP)){
+ 49c:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <UP_pressed>
+ 4a0:	81 30       	cpi	r24, 0x01	; 1
+ 4a2:	89 f4       	brne	.+34     	; 0x4c6 <SET_state+0x54>
+ 4a4:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <desired_temp>
+ 4a8:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <desired_temp+0x1>
+ 4ac:	8b 34       	cpi	r24, 0x4B	; 75
+ 4ae:	91 05       	cpc	r25, r1
+ 4b0:	50 f4       	brcc	.+20     	; 0x4c6 <SET_state+0x54>
+		desired_temp = desired_temp + 5;
+ 4b2:	05 96       	adiw	r24, 0x05	; 5
+ 4b4:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <desired_temp+0x1>
+ 4b8:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <desired_temp>
+		setting_counter = 0;
+ 4bc:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <setting_counter>
+		SSD_write(desired_temp);
+ 4c0:	0e 94 75 00 	call	0xea	; 0xea <SSD_write>
+ 4c4:	14 c0       	rjmp	.+40     	; 0x4ee <SET_state+0x7c>
+	}
+	else if ((DOWN_pressed() == PRESSED) && (desired_temp > MIN_TEMP)){
+ 4c6:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <DOWN_pressed>
+ 4ca:	81 30       	cpi	r24, 0x01	; 1
+ 4cc:	81 f4       	brne	.+32     	; 0x4ee <SET_state+0x7c>
+ 4ce:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <desired_temp>
+ 4d2:	90 91 6f 00 	lds	r25, 0x006F	; 0x80006f <desired_temp+0x1>
+ 4d6:	84 32       	cpi	r24, 0x24	; 36
+ 4d8:	91 05       	cpc	r25, r1
+ 4da:	48 f0       	brcs	.+18     	; 0x4ee <SET_state+0x7c>
+		desired_temp = desired_temp - 5;
+ 4dc:	05 97       	sbiw	r24, 0x05	; 5
+ 4de:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <desired_temp+0x1>
+ 4e2:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <desired_temp>
+		setting_counter = 0;
+ 4e6:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <setting_counter>
+		SSD_write(desired_temp);
+ 4ea:	0e 94 75 00 	call	0xea	; 0xea <SSD_write>
+	}
+	
+	EEPROM_write(0x0000,desired_temp);
+ 4ee:	60 91 6e 00 	lds	r22, 0x006E	; 0x80006e <desired_temp>
+ 4f2:	80 e0       	ldi	r24, 0x00	; 0
+ 4f4:	90 e0       	ldi	r25, 0x00	; 0
+ 4f6:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <EEPROM_write>
+ 4fa:	08 95       	ret
+
+000004fc <change_temp>:
+/*----------------------------------------------------------------------------*-
+change_temp : This function turns on the Heater or the Cooler
+-*----------------------------------------------------------------------------*/
+
+void change_temp(void){
+	if( (desired_temp < avg_temp + MARGIN_TEMP) && (desired_temp > avg_temp - MARGIN_TEMP) ){
+ 4fc:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <avg_temp>
+ 500:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <avg_temp+0x1>
+ 504:	ac 01       	movw	r20, r24
+ 506:	4b 5f       	subi	r20, 0xFB	; 251
+ 508:	5f 4f       	sbci	r21, 0xFF	; 255
+ 50a:	20 91 6e 00 	lds	r18, 0x006E	; 0x80006e <desired_temp>
+ 50e:	30 91 6f 00 	lds	r19, 0x006F	; 0x80006f <desired_temp+0x1>
+ 512:	24 17       	cp	r18, r20
+ 514:	35 07       	cpc	r19, r21
+ 516:	68 f4       	brcc	.+26     	; 0x532 <change_temp+0x36>
+ 518:	bc 01       	movw	r22, r24
+ 51a:	65 50       	subi	r22, 0x05	; 5
+ 51c:	71 09       	sbc	r23, r1
+ 51e:	62 17       	cp	r22, r18
+ 520:	73 07       	cpc	r23, r19
+ 522:	38 f4       	brcc	.+14     	; 0x532 <change_temp+0x36>
+		// Actual Temperature equals Desired Temperature
+		// No need for Heating or Cooling
+		heat_stop();
+ 524:	0e 94 0c 01 	call	0x218	; 0x218 <heat_stop>
+		cool_stop();
+ 528:	0e 94 10 01 	call	0x220	; 0x220 <cool_stop>
+		led_off();
+ 52c:	0e 94 1f 01 	call	0x23e	; 0x23e <led_off>
+ 530:	08 95       	ret
+	}
+	else if(desired_temp < avg_temp + MARGIN_TEMP){
+ 532:	24 17       	cp	r18, r20
+ 534:	35 07       	cpc	r19, r21
+ 536:	38 f4       	brcc	.+14     	; 0x546 <change_temp+0x4a>
+		// Actual Temperature is Larger
+		// we need the Cooling element
+		
+		heat_stop();
+ 538:	0e 94 0c 01 	call	0x218	; 0x218 <heat_stop>
+		cool_start();
+ 53c:	0e 94 08 01 	call	0x210	; 0x210 <cool_start>
+		led_on();
+ 540:	0e 94 1b 01 	call	0x236	; 0x236 <led_on>
+ 544:	08 95       	ret
+	}
+	else if (desired_temp > avg_temp - MARGIN_TEMP){
+ 546:	05 97       	sbiw	r24, 0x05	; 5
+ 548:	82 17       	cp	r24, r18
+ 54a:	93 07       	cpc	r25, r19
+ 54c:	78 f4       	brcc	.+30     	; 0x56c <change_temp+0x70>
+		// Actual Temperature is Smaller
+		// we need the Heating element
+		
+		heat_start();
+ 54e:	0e 94 04 01 	call	0x208	; 0x208 <heat_start>
+		cool_stop();
+ 552:	0e 94 10 01 	call	0x220	; 0x220 <cool_stop>
+		if (toggle_f == 1)
+ 556:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <toggle_f>
+ 55a:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <toggle_f+0x1>
+ 55e:	01 97       	sbiw	r24, 0x01	; 1
+ 560:	19 f4       	brne	.+6      	; 0x568 <change_temp+0x6c>
+		{
+			led_on();
+ 562:	0e 94 1b 01 	call	0x236	; 0x236 <led_on>
+ 566:	08 95       	ret
+		}
+		else {
+			led_off();
+ 568:	0e 94 1f 01 	call	0x23e	; 0x23e <led_off>
+ 56c:	08 95       	ret
+
+0000056e <add_new_temp>:
+add_new_temp : This function is used to add the new measured temperature to
+the temperature array that will have its average during the code.
+-*----------------------------------------------------------------------------*/
+
+void add_new_temp(uint16_t * arr , uint16_t new_val){
+	arr[arr_counter] = new_val;
+ 56e:	20 91 6a 00 	lds	r18, 0x006A	; 0x80006a <__data_end>
+ 572:	30 e0       	ldi	r19, 0x00	; 0
+ 574:	22 0f       	add	r18, r18
+ 576:	33 1f       	adc	r19, r19
+ 578:	82 0f       	add	r24, r18
+ 57a:	93 1f       	adc	r25, r19
+ 57c:	fc 01       	movw	r30, r24
+ 57e:	71 83       	std	Z+1, r23	; 0x01
+ 580:	60 83       	st	Z, r22
+	arr_counter ++;
+ 582:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <__data_end>
+ 586:	8f 5f       	subi	r24, 0xFF	; 255
+ 588:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <__data_end>
+	
+	if (arr_counter == 9){
+ 58c:	89 30       	cpi	r24, 0x09	; 9
+ 58e:	11 f4       	brne	.+4      	; 0x594 <add_new_temp+0x26>
+		arr_counter = 0;
+ 590:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <__data_end>
+ 594:	08 95       	ret
+
+00000596 <calc_avg_temp>:
+
+/*----------------------------------------------------------------------------*-
+Calculate_Average_Temp.: to calculate the last 10 measured temperatures.
+-*----------------------------------------------------------------------------*/
+
+uint16_t calc_avg_temp(uint16_t * arr){
+ 596:	bc 01       	movw	r22, r24
+	uint16_t sum = 0;
+	uint16_t avg;
+	
+	for(uint8_t i=0; i<NUM_OF_TEMP_MEASURES; i++){
+ 598:	90 e0       	ldi	r25, 0x00	; 0
+/*----------------------------------------------------------------------------*-
+Calculate_Average_Temp.: to calculate the last 10 measured temperatures.
+-*----------------------------------------------------------------------------*/
+
+uint16_t calc_avg_temp(uint16_t * arr){
+	uint16_t sum = 0;
+ 59a:	20 e0       	ldi	r18, 0x00	; 0
+ 59c:	30 e0       	ldi	r19, 0x00	; 0
+	uint16_t avg;
+	
+	for(uint8_t i=0; i<NUM_OF_TEMP_MEASURES; i++){
+ 59e:	0b c0       	rjmp	.+22     	; 0x5b6 <calc_avg_temp+0x20>
+		sum = sum + arr[i];
+ 5a0:	e9 2f       	mov	r30, r25
+ 5a2:	f0 e0       	ldi	r31, 0x00	; 0
+ 5a4:	ee 0f       	add	r30, r30
+ 5a6:	ff 1f       	adc	r31, r31
+ 5a8:	e6 0f       	add	r30, r22
+ 5aa:	f7 1f       	adc	r31, r23
+ 5ac:	40 81       	ld	r20, Z
+ 5ae:	51 81       	ldd	r21, Z+1	; 0x01
+ 5b0:	24 0f       	add	r18, r20
+ 5b2:	35 1f       	adc	r19, r21
+
+uint16_t calc_avg_temp(uint16_t * arr){
+	uint16_t sum = 0;
+	uint16_t avg;
+	
+	for(uint8_t i=0; i<NUM_OF_TEMP_MEASURES; i++){
+ 5b4:	9f 5f       	subi	r25, 0xFF	; 255
+ 5b6:	9a 30       	cpi	r25, 0x0A	; 10
+ 5b8:	98 f3       	brcs	.-26     	; 0x5a0 <calc_avg_temp+0xa>
+		sum = sum + arr[i];
+	}
+	avg = (uint16_t) sum / NUM_OF_TEMP_MEASURES;
+ 5ba:	ad ec       	ldi	r26, 0xCD	; 205
+ 5bc:	bc ec       	ldi	r27, 0xCC	; 204
+ 5be:	0e 94 e1 04 	call	0x9c2	; 0x9c2 <__umulhisi3>
+	return avg;
+}
+ 5c2:	96 95       	lsr	r25
+ 5c4:	87 95       	ror	r24
+ 5c6:	96 95       	lsr	r25
+ 5c8:	87 95       	ror	r24
+ 5ca:	96 95       	lsr	r25
+ 5cc:	87 95       	ror	r24
+ 5ce:	08 95       	ret
+
+000005d0 <ON_state>:
+	
+	// if 100ms elapsed and flag is triggered
+	// measure temperature from the sensor
+	// add it to array and get the average
+		
+	if (temp_measure_f == 1){
+ 5d0:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <temp_measure_f>
+ 5d4:	81 30       	cpi	r24, 0x01	; 1
+ 5d6:	09 f5       	brne	.+66     	; 0x61a <ON_state+0x4a>
+		actual_temp = (ADC_read()*0.5);
+ 5d8:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <ADC_read>
+ 5dc:	bc 01       	movw	r22, r24
+ 5de:	80 e0       	ldi	r24, 0x00	; 0
+ 5e0:	90 e0       	ldi	r25, 0x00	; 0
+ 5e2:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <__floatunsisf>
+ 5e6:	20 e0       	ldi	r18, 0x00	; 0
+ 5e8:	30 e0       	ldi	r19, 0x00	; 0
+ 5ea:	40 e0       	ldi	r20, 0x00	; 0
+ 5ec:	5f e3       	ldi	r21, 0x3F	; 63
+ 5ee:	0e 94 38 04 	call	0x870	; 0x870 <__mulsf3>
+ 5f2:	0e 94 a3 03 	call	0x746	; 0x746 <__fixunssfsi>
+ 5f6:	70 93 73 00 	sts	0x0073, r23	; 0x800073 <actual_temp+0x1>
+ 5fa:	60 93 72 00 	sts	0x0072, r22	; 0x800072 <actual_temp>
+		add_new_temp(temp_arr , actual_temp);
+ 5fe:	89 e7       	ldi	r24, 0x79	; 121
+ 600:	90 e0       	ldi	r25, 0x00	; 0
+ 602:	0e 94 b7 02 	call	0x56e	; 0x56e <add_new_temp>
+		avg_temp = calc_avg_temp(temp_arr);	
+ 606:	89 e7       	ldi	r24, 0x79	; 121
+ 608:	90 e0       	ldi	r25, 0x00	; 0
+ 60a:	0e 94 cb 02 	call	0x596	; 0x596 <calc_avg_temp>
+ 60e:	90 93 75 00 	sts	0x0075, r25	; 0x800075 <avg_temp+0x1>
+ 612:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <avg_temp>
+		temp_measure_f = 0;
+ 616:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <temp_measure_f>
+	}
+	if(avg_flag==1)
+ 61a:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <avg_flag>
+ 61e:	81 30       	cpi	r24, 0x01	; 1
+ 620:	41 f4       	brne	.+16     	; 0x632 <ON_state+0x62>
+	{
+		EEPROM_write(0x0000,(uint8_t) avg_temp);
+ 622:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <avg_temp>
+ 626:	80 e0       	ldi	r24, 0x00	; 0
+ 628:	90 e0       	ldi	r25, 0x00	; 0
+ 62a:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <EEPROM_write>
+		avg_flag=0;
+ 62e:	10 92 76 00 	sts	0x0076, r1	; 0x800076 <avg_flag>
+	}
+	SSD_write(actual_temp);
+ 632:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <actual_temp>
+ 636:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <actual_temp+0x1>
+ 63a:	0e 94 75 00 	call	0xea	; 0xea <SSD_write>
+	
+	// turn cooler or heater ON and OFF depending on
+	// the average temperature measured from the array.
+	
+	change_temp();
+ 63e:	0e 94 7e 02 	call	0x4fc	; 0x4fc <change_temp>
+	 
+	 // Check if UP or DOWN buttons are pressed to
+	 // switch to the SETTING_MODE
+	
+	if(UP_pressed()==PRESSED || DOWN_pressed()==PRESSED){
+ 642:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <UP_pressed>
+ 646:	81 30       	cpi	r24, 0x01	; 1
+ 648:	21 f0       	breq	.+8      	; 0x652 <ON_state+0x82>
+ 64a:	0e 94 e8 00 	call	0x1d0	; 0x1d0 <DOWN_pressed>
+ 64e:	81 30       	cpi	r24, 0x01	; 1
+ 650:	39 f4       	brne	.+14     	; 0x660 <ON_state+0x90>
+
+		SSD_disable();
+ 652:	0e 94 61 00 	call	0xc2	; 0xc2 <SSD_disable>
+		setting_counter = 0;
+ 656:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <setting_counter>
+		Curr_state = SETTING;
+ 65a:	82 e0       	ldi	r24, 0x02	; 2
+ 65c:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <Curr_state>
+ 660:	08 95       	ret
+
+00000662 <temp_arr_init>:
+that reads the first actual temperature and put it at all elements in the
+temperature array.
+-*----------------------------------------------------------------------------*/
+
+void temp_arr_init(void){
+	uint16_t first_temp = ADC_read()*0.5;
+ 662:	0e 94 e4 01 	call	0x3c8	; 0x3c8 <ADC_read>
+ 666:	bc 01       	movw	r22, r24
+ 668:	80 e0       	ldi	r24, 0x00	; 0
+ 66a:	90 e0       	ldi	r25, 0x00	; 0
+ 66c:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <__floatunsisf>
+ 670:	20 e0       	ldi	r18, 0x00	; 0
+ 672:	30 e0       	ldi	r19, 0x00	; 0
+ 674:	40 e0       	ldi	r20, 0x00	; 0
+ 676:	5f e3       	ldi	r21, 0x3F	; 63
+ 678:	0e 94 38 04 	call	0x870	; 0x870 <__mulsf3>
+ 67c:	0e 94 a3 03 	call	0x746	; 0x746 <__fixunssfsi>
+	
+	for (uint8_t i = 0; i<NUM_OF_TEMP_MEASURES; i++){
+ 680:	80 e0       	ldi	r24, 0x00	; 0
+ 682:	09 c0       	rjmp	.+18     	; 0x696 <temp_arr_init+0x34>
+		temp_arr[i]= first_temp;
+ 684:	e8 2f       	mov	r30, r24
+ 686:	f0 e0       	ldi	r31, 0x00	; 0
+ 688:	ee 0f       	add	r30, r30
+ 68a:	ff 1f       	adc	r31, r31
+ 68c:	e7 58       	subi	r30, 0x87	; 135
+ 68e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 690:	71 83       	std	Z+1, r23	; 0x01
+ 692:	60 83       	st	Z, r22
+-*----------------------------------------------------------------------------*/
+
+void temp_arr_init(void){
+	uint16_t first_temp = ADC_read()*0.5;
+	
+	for (uint8_t i = 0; i<NUM_OF_TEMP_MEASURES; i++){
+ 694:	8f 5f       	subi	r24, 0xFF	; 255
+ 696:	8a 30       	cpi	r24, 0x0A	; 10
+ 698:	a8 f3       	brcs	.-22     	; 0x684 <temp_arr_init+0x22>
+		temp_arr[i]= first_temp;
+	}
+	
+	avg_temp = calc_avg_temp(temp_arr);
+ 69a:	89 e7       	ldi	r24, 0x79	; 121
+ 69c:	90 e0       	ldi	r25, 0x00	; 0
+ 69e:	0e 94 cb 02 	call	0x596	; 0x596 <calc_avg_temp>
+ 6a2:	90 93 75 00 	sts	0x0075, r25	; 0x800075 <avg_temp+0x1>
+ 6a6:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <avg_temp>
+	arr_counter = 0;
+ 6aa:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <__data_end>
+ 6ae:	08 95       	ret
+
+000006b0 <sys_init>:
+
+#include "Sys.h"
+
+void sys_init(void){
+	// Modules initialization
+	ADC_init();
+ 6b0:	0e 94 c2 01 	call	0x384	; 0x384 <ADC_init>
+	Buttons_init();
+ 6b4:	0e 94 ba 00 	call	0x174	; 0x174 <Buttons_init>
+	cool_init();
+ 6b8:	0e 94 00 01 	call	0x200	; 0x200 <cool_init>
+	heat_init();
+ 6bc:	0e 94 fc 00 	call	0x1f8	; 0x1f8 <heat_init>
+	led_init();
+ 6c0:	0e 94 14 01 	call	0x228	; 0x228 <led_init>
+	SSD_init();
+ 6c4:	0e 94 68 00 	call	0xd0	; 0xd0 <SSD_init>
+	timer0_init();
+ 6c8:	0e 94 25 02 	call	0x44a	; 0x44a <timer0_init>
+	timer1_init();
+ 6cc:	0e 94 14 02 	call	0x428	; 0x428 <timer1_init>
+	timer1_INT_enable();
+ 6d0:	0e 94 35 02 	call	0x46a	; 0x46a <timer1_INT_enable>
+	
+	// ON_OFF_flag is in OFF mode initially
+	Curr_state = OFF;
+ 6d4:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <Curr_state>
+	
+	// setting initial temp. and fill array
+	if(EEPROM_read(0x0000) != 0xFF){
+ 6d8:	80 e0       	ldi	r24, 0x00	; 0
+ 6da:	90 e0       	ldi	r25, 0x00	; 0
+ 6dc:	0e 94 f3 01 	call	0x3e6	; 0x3e6 <EEPROM_read>
+ 6e0:	8f 3f       	cpi	r24, 0xFF	; 255
+ 6e2:	51 f0       	breq	.+20     	; 0x6f8 <sys_init+0x48>
+		desired_temp = EEPROM_read(0x0000);
+ 6e4:	80 e0       	ldi	r24, 0x00	; 0
+ 6e6:	90 e0       	ldi	r25, 0x00	; 0
+ 6e8:	0e 94 f3 01 	call	0x3e6	; 0x3e6 <EEPROM_read>
+ 6ec:	90 e0       	ldi	r25, 0x00	; 0
+ 6ee:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <desired_temp+0x1>
+ 6f2:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <desired_temp>
+ 6f6:	06 c0       	rjmp	.+12     	; 0x704 <sys_init+0x54>
+	}
+	else{
+		desired_temp = INIT_DESIRED_TEMP;
+ 6f8:	82 e3       	ldi	r24, 0x32	; 50
+ 6fa:	90 e0       	ldi	r25, 0x00	; 0
+ 6fc:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <desired_temp+0x1>
+ 700:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <desired_temp>
+	}
+	
+	temp_arr_init();
+ 704:	0e 94 31 03 	call	0x662	; 0x662 <temp_arr_init>
+	
+	// Save desired temp in EEPROM
+	// which is the INIT_DESIRED_TEMP.
+	EEPROM_write(0x0000,(uint8_t) desired_temp);	
+ 708:	60 91 6e 00 	lds	r22, 0x006E	; 0x80006e <desired_temp>
+ 70c:	80 e0       	ldi	r24, 0x00	; 0
+ 70e:	90 e0       	ldi	r25, 0x00	; 0
+ 710:	0e 94 fa 01 	call	0x3f4	; 0x3f4 <EEPROM_write>
+ 714:	08 95       	ret
+
+00000716 <go_to_sleep>:
+power when it doesn't need to do any task at the moment.
+-*----------------------------------------------------------------------------*/
+
+void go_to_sleep(void){
+	
+	MCUCR&=~(1<<SM0);
+ 716:	85 b7       	in	r24, 0x35	; 53
+ 718:	8f 7e       	andi	r24, 0xEF	; 239
+ 71a:	85 bf       	out	0x35, r24	; 53
+	MCUCR&=~(1<<SM1);
+ 71c:	85 b7       	in	r24, 0x35	; 53
+ 71e:	8f 7d       	andi	r24, 0xDF	; 223
+ 720:	85 bf       	out	0x35, r24	; 53
+	MCUCR&=~(1<<SM2);
+ 722:	85 b7       	in	r24, 0x35	; 53
+ 724:	8f 7b       	andi	r24, 0xBF	; 191
+ 726:	85 bf       	out	0x35, r24	; 53
+	
+	MCUCR|=(1<<SE);
+ 728:	85 b7       	in	r24, 0x35	; 53
+ 72a:	80 68       	ori	r24, 0x80	; 128
+ 72c:	85 bf       	out	0x35, r24	; 53
+ 72e:	08 95       	ret
+
+00000730 <OFF_state>:
+/*----------------------------------------------------------------------------*-
+OFF_state() : This turns off all output display peripherals, and the Timer.
+-*----------------------------------------------------------------------------*/
+
+void OFF_state(void){
+		SSD_turn_off();
+ 730:	0e 94 73 00 	call	0xe6	; 0xe6 <SSD_turn_off>
+		led_off();
+ 734:	0e 94 1f 01 	call	0x23e	; 0x23e <led_off>
+		heat_stop();
+ 738:	0e 94 0c 01 	call	0x218	; 0x218 <heat_stop>
+		cool_stop();
+ 73c:	0e 94 10 01 	call	0x220	; 0x220 <cool_stop>
+		go_to_sleep();
+ 740:	0e 94 8b 03 	call	0x716	; 0x716 <go_to_sleep>
+ 744:	08 95       	ret
+
+00000746 <__fixunssfsi>:
+ 746:	0e 94 17 04 	call	0x82e	; 0x82e <__fp_splitA>
+ 74a:	88 f0       	brcs	.+34     	; 0x76e <__fixunssfsi+0x28>
+ 74c:	9f 57       	subi	r25, 0x7F	; 127
+ 74e:	98 f0       	brcs	.+38     	; 0x776 <__fixunssfsi+0x30>
+ 750:	b9 2f       	mov	r27, r25
+ 752:	99 27       	eor	r25, r25
+ 754:	b7 51       	subi	r27, 0x17	; 23
+ 756:	b0 f0       	brcs	.+44     	; 0x784 <__fixunssfsi+0x3e>
+ 758:	e1 f0       	breq	.+56     	; 0x792 <__fixunssfsi+0x4c>
+ 75a:	66 0f       	add	r22, r22
+ 75c:	77 1f       	adc	r23, r23
+ 75e:	88 1f       	adc	r24, r24
+ 760:	99 1f       	adc	r25, r25
+ 762:	1a f0       	brmi	.+6      	; 0x76a <__fixunssfsi+0x24>
+ 764:	ba 95       	dec	r27
+ 766:	c9 f7       	brne	.-14     	; 0x75a <__fixunssfsi+0x14>
+ 768:	14 c0       	rjmp	.+40     	; 0x792 <__fixunssfsi+0x4c>
+ 76a:	b1 30       	cpi	r27, 0x01	; 1
+ 76c:	91 f0       	breq	.+36     	; 0x792 <__fixunssfsi+0x4c>
+ 76e:	0e 94 31 04 	call	0x862	; 0x862 <__fp_zero>
+ 772:	b1 e0       	ldi	r27, 0x01	; 1
+ 774:	08 95       	ret
+ 776:	0c 94 31 04 	jmp	0x862	; 0x862 <__fp_zero>
+ 77a:	67 2f       	mov	r22, r23
+ 77c:	78 2f       	mov	r23, r24
+ 77e:	88 27       	eor	r24, r24
+ 780:	b8 5f       	subi	r27, 0xF8	; 248
+ 782:	39 f0       	breq	.+14     	; 0x792 <__fixunssfsi+0x4c>
+ 784:	b9 3f       	cpi	r27, 0xF9	; 249
+ 786:	cc f3       	brlt	.-14     	; 0x77a <__fixunssfsi+0x34>
+ 788:	86 95       	lsr	r24
+ 78a:	77 95       	ror	r23
+ 78c:	67 95       	ror	r22
+ 78e:	b3 95       	inc	r27
+ 790:	d9 f7       	brne	.-10     	; 0x788 <__fixunssfsi+0x42>
+ 792:	3e f4       	brtc	.+14     	; 0x7a2 <__fixunssfsi+0x5c>
+ 794:	90 95       	com	r25
+ 796:	80 95       	com	r24
+ 798:	70 95       	com	r23
+ 79a:	61 95       	neg	r22
+ 79c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 79e:	8f 4f       	sbci	r24, 0xFF	; 255
+ 7a0:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7a2:	08 95       	ret
+
+000007a4 <__floatunsisf>:
+ 7a4:	e8 94       	clt
+ 7a6:	09 c0       	rjmp	.+18     	; 0x7ba <__floatsisf+0x12>
+
+000007a8 <__floatsisf>:
+ 7a8:	97 fb       	bst	r25, 7
+ 7aa:	3e f4       	brtc	.+14     	; 0x7ba <__floatsisf+0x12>
+ 7ac:	90 95       	com	r25
+ 7ae:	80 95       	com	r24
+ 7b0:	70 95       	com	r23
+ 7b2:	61 95       	neg	r22
+ 7b4:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7b6:	8f 4f       	sbci	r24, 0xFF	; 255
+ 7b8:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7ba:	99 23       	and	r25, r25
+ 7bc:	a9 f0       	breq	.+42     	; 0x7e8 <__floatsisf+0x40>
+ 7be:	f9 2f       	mov	r31, r25
+ 7c0:	96 e9       	ldi	r25, 0x96	; 150
+ 7c2:	bb 27       	eor	r27, r27
+ 7c4:	93 95       	inc	r25
+ 7c6:	f6 95       	lsr	r31
+ 7c8:	87 95       	ror	r24
+ 7ca:	77 95       	ror	r23
+ 7cc:	67 95       	ror	r22
+ 7ce:	b7 95       	ror	r27
+ 7d0:	f1 11       	cpse	r31, r1
+ 7d2:	f8 cf       	rjmp	.-16     	; 0x7c4 <__floatsisf+0x1c>
+ 7d4:	fa f4       	brpl	.+62     	; 0x814 <__DATA_REGION_LENGTH__+0x14>
+ 7d6:	bb 0f       	add	r27, r27
+ 7d8:	11 f4       	brne	.+4      	; 0x7de <__floatsisf+0x36>
+ 7da:	60 ff       	sbrs	r22, 0
+ 7dc:	1b c0       	rjmp	.+54     	; 0x814 <__DATA_REGION_LENGTH__+0x14>
+ 7de:	6f 5f       	subi	r22, 0xFF	; 255
+ 7e0:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7e2:	8f 4f       	sbci	r24, 0xFF	; 255
+ 7e4:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7e6:	16 c0       	rjmp	.+44     	; 0x814 <__DATA_REGION_LENGTH__+0x14>
+ 7e8:	88 23       	and	r24, r24
+ 7ea:	11 f0       	breq	.+4      	; 0x7f0 <__floatsisf+0x48>
+ 7ec:	96 e9       	ldi	r25, 0x96	; 150
+ 7ee:	11 c0       	rjmp	.+34     	; 0x812 <__DATA_REGION_LENGTH__+0x12>
+ 7f0:	77 23       	and	r23, r23
+ 7f2:	21 f0       	breq	.+8      	; 0x7fc <__floatsisf+0x54>
+ 7f4:	9e e8       	ldi	r25, 0x8E	; 142
+ 7f6:	87 2f       	mov	r24, r23
+ 7f8:	76 2f       	mov	r23, r22
+ 7fa:	05 c0       	rjmp	.+10     	; 0x806 <__DATA_REGION_LENGTH__+0x6>
+ 7fc:	66 23       	and	r22, r22
+ 7fe:	71 f0       	breq	.+28     	; 0x81c <__DATA_REGION_LENGTH__+0x1c>
+ 800:	96 e8       	ldi	r25, 0x86	; 134
+ 802:	86 2f       	mov	r24, r22
+ 804:	70 e0       	ldi	r23, 0x00	; 0
+ 806:	60 e0       	ldi	r22, 0x00	; 0
+ 808:	2a f0       	brmi	.+10     	; 0x814 <__DATA_REGION_LENGTH__+0x14>
+ 80a:	9a 95       	dec	r25
+ 80c:	66 0f       	add	r22, r22
+ 80e:	77 1f       	adc	r23, r23
+ 810:	88 1f       	adc	r24, r24
+ 812:	da f7       	brpl	.-10     	; 0x80a <__DATA_REGION_LENGTH__+0xa>
+ 814:	88 0f       	add	r24, r24
+ 816:	96 95       	lsr	r25
+ 818:	87 95       	ror	r24
+ 81a:	97 f9       	bld	r25, 7
+ 81c:	08 95       	ret
+
+0000081e <__fp_split3>:
+ 81e:	57 fd       	sbrc	r21, 7
+ 820:	90 58       	subi	r25, 0x80	; 128
+ 822:	44 0f       	add	r20, r20
+ 824:	55 1f       	adc	r21, r21
+ 826:	59 f0       	breq	.+22     	; 0x83e <__fp_splitA+0x10>
+ 828:	5f 3f       	cpi	r21, 0xFF	; 255
+ 82a:	71 f0       	breq	.+28     	; 0x848 <__fp_splitA+0x1a>
+ 82c:	47 95       	ror	r20
+
+0000082e <__fp_splitA>:
+ 82e:	88 0f       	add	r24, r24
+ 830:	97 fb       	bst	r25, 7
+ 832:	99 1f       	adc	r25, r25
+ 834:	61 f0       	breq	.+24     	; 0x84e <__fp_splitA+0x20>
+ 836:	9f 3f       	cpi	r25, 0xFF	; 255
+ 838:	79 f0       	breq	.+30     	; 0x858 <__fp_splitA+0x2a>
+ 83a:	87 95       	ror	r24
+ 83c:	08 95       	ret
+ 83e:	12 16       	cp	r1, r18
+ 840:	13 06       	cpc	r1, r19
+ 842:	14 06       	cpc	r1, r20
+ 844:	55 1f       	adc	r21, r21
+ 846:	f2 cf       	rjmp	.-28     	; 0x82c <__fp_split3+0xe>
+ 848:	46 95       	lsr	r20
+ 84a:	f1 df       	rcall	.-30     	; 0x82e <__fp_splitA>
+ 84c:	08 c0       	rjmp	.+16     	; 0x85e <__fp_splitA+0x30>
+ 84e:	16 16       	cp	r1, r22
+ 850:	17 06       	cpc	r1, r23
+ 852:	18 06       	cpc	r1, r24
+ 854:	99 1f       	adc	r25, r25
+ 856:	f1 cf       	rjmp	.-30     	; 0x83a <__fp_splitA+0xc>
+ 858:	86 95       	lsr	r24
+ 85a:	71 05       	cpc	r23, r1
+ 85c:	61 05       	cpc	r22, r1
+ 85e:	08 94       	sec
+ 860:	08 95       	ret
+
+00000862 <__fp_zero>:
+ 862:	e8 94       	clt
+
+00000864 <__fp_szero>:
+ 864:	bb 27       	eor	r27, r27
+ 866:	66 27       	eor	r22, r22
+ 868:	77 27       	eor	r23, r23
+ 86a:	cb 01       	movw	r24, r22
+ 86c:	97 f9       	bld	r25, 7
+ 86e:	08 95       	ret
+
+00000870 <__mulsf3>:
+ 870:	0e 94 4b 04 	call	0x896	; 0x896 <__mulsf3x>
+ 874:	0c 94 bc 04 	jmp	0x978	; 0x978 <__fp_round>
+ 878:	0e 94 ae 04 	call	0x95c	; 0x95c <__fp_pscA>
+ 87c:	38 f0       	brcs	.+14     	; 0x88c <__mulsf3+0x1c>
+ 87e:	0e 94 b5 04 	call	0x96a	; 0x96a <__fp_pscB>
+ 882:	20 f0       	brcs	.+8      	; 0x88c <__mulsf3+0x1c>
+ 884:	95 23       	and	r25, r21
+ 886:	11 f0       	breq	.+4      	; 0x88c <__mulsf3+0x1c>
+ 888:	0c 94 a5 04 	jmp	0x94a	; 0x94a <__fp_inf>
+ 88c:	0c 94 ab 04 	jmp	0x956	; 0x956 <__fp_nan>
+ 890:	11 24       	eor	r1, r1
+ 892:	0c 94 32 04 	jmp	0x864	; 0x864 <__fp_szero>
+
+00000896 <__mulsf3x>:
+ 896:	0e 94 0f 04 	call	0x81e	; 0x81e <__fp_split3>
+ 89a:	70 f3       	brcs	.-36     	; 0x878 <__mulsf3+0x8>
+
+0000089c <__mulsf3_pse>:
+ 89c:	95 9f       	mul	r25, r21
+ 89e:	c1 f3       	breq	.-16     	; 0x890 <__mulsf3+0x20>
+ 8a0:	95 0f       	add	r25, r21
+ 8a2:	50 e0       	ldi	r21, 0x00	; 0
+ 8a4:	55 1f       	adc	r21, r21
+ 8a6:	62 9f       	mul	r22, r18
+ 8a8:	f0 01       	movw	r30, r0
+ 8aa:	72 9f       	mul	r23, r18
+ 8ac:	bb 27       	eor	r27, r27
+ 8ae:	f0 0d       	add	r31, r0
+ 8b0:	b1 1d       	adc	r27, r1
+ 8b2:	63 9f       	mul	r22, r19
+ 8b4:	aa 27       	eor	r26, r26
+ 8b6:	f0 0d       	add	r31, r0
+ 8b8:	b1 1d       	adc	r27, r1
+ 8ba:	aa 1f       	adc	r26, r26
+ 8bc:	64 9f       	mul	r22, r20
+ 8be:	66 27       	eor	r22, r22
+ 8c0:	b0 0d       	add	r27, r0
+ 8c2:	a1 1d       	adc	r26, r1
+ 8c4:	66 1f       	adc	r22, r22
+ 8c6:	82 9f       	mul	r24, r18
+ 8c8:	22 27       	eor	r18, r18
+ 8ca:	b0 0d       	add	r27, r0
+ 8cc:	a1 1d       	adc	r26, r1
+ 8ce:	62 1f       	adc	r22, r18
+ 8d0:	73 9f       	mul	r23, r19
+ 8d2:	b0 0d       	add	r27, r0
+ 8d4:	a1 1d       	adc	r26, r1
+ 8d6:	62 1f       	adc	r22, r18
+ 8d8:	83 9f       	mul	r24, r19
+ 8da:	a0 0d       	add	r26, r0
+ 8dc:	61 1d       	adc	r22, r1
+ 8de:	22 1f       	adc	r18, r18
+ 8e0:	74 9f       	mul	r23, r20
+ 8e2:	33 27       	eor	r19, r19
+ 8e4:	a0 0d       	add	r26, r0
+ 8e6:	61 1d       	adc	r22, r1
+ 8e8:	23 1f       	adc	r18, r19
+ 8ea:	84 9f       	mul	r24, r20
+ 8ec:	60 0d       	add	r22, r0
+ 8ee:	21 1d       	adc	r18, r1
+ 8f0:	82 2f       	mov	r24, r18
+ 8f2:	76 2f       	mov	r23, r22
+ 8f4:	6a 2f       	mov	r22, r26
+ 8f6:	11 24       	eor	r1, r1
+ 8f8:	9f 57       	subi	r25, 0x7F	; 127
+ 8fa:	50 40       	sbci	r21, 0x00	; 0
+ 8fc:	9a f0       	brmi	.+38     	; 0x924 <__mulsf3_pse+0x88>
+ 8fe:	f1 f0       	breq	.+60     	; 0x93c <__mulsf3_pse+0xa0>
+ 900:	88 23       	and	r24, r24
+ 902:	4a f0       	brmi	.+18     	; 0x916 <__mulsf3_pse+0x7a>
+ 904:	ee 0f       	add	r30, r30
+ 906:	ff 1f       	adc	r31, r31
+ 908:	bb 1f       	adc	r27, r27
+ 90a:	66 1f       	adc	r22, r22
+ 90c:	77 1f       	adc	r23, r23
+ 90e:	88 1f       	adc	r24, r24
+ 910:	91 50       	subi	r25, 0x01	; 1
+ 912:	50 40       	sbci	r21, 0x00	; 0
+ 914:	a9 f7       	brne	.-22     	; 0x900 <__mulsf3_pse+0x64>
+ 916:	9e 3f       	cpi	r25, 0xFE	; 254
+ 918:	51 05       	cpc	r21, r1
+ 91a:	80 f0       	brcs	.+32     	; 0x93c <__mulsf3_pse+0xa0>
+ 91c:	0c 94 a5 04 	jmp	0x94a	; 0x94a <__fp_inf>
+ 920:	0c 94 32 04 	jmp	0x864	; 0x864 <__fp_szero>
+ 924:	5f 3f       	cpi	r21, 0xFF	; 255
+ 926:	e4 f3       	brlt	.-8      	; 0x920 <__mulsf3_pse+0x84>
+ 928:	98 3e       	cpi	r25, 0xE8	; 232
+ 92a:	d4 f3       	brlt	.-12     	; 0x920 <__mulsf3_pse+0x84>
+ 92c:	86 95       	lsr	r24
+ 92e:	77 95       	ror	r23
+ 930:	67 95       	ror	r22
+ 932:	b7 95       	ror	r27
+ 934:	f7 95       	ror	r31
+ 936:	e7 95       	ror	r30
+ 938:	9f 5f       	subi	r25, 0xFF	; 255
+ 93a:	c1 f7       	brne	.-16     	; 0x92c <__mulsf3_pse+0x90>
+ 93c:	fe 2b       	or	r31, r30
+ 93e:	88 0f       	add	r24, r24
+ 940:	91 1d       	adc	r25, r1
+ 942:	96 95       	lsr	r25
+ 944:	87 95       	ror	r24
+ 946:	97 f9       	bld	r25, 7
+ 948:	08 95       	ret
+
+0000094a <__fp_inf>:
+ 94a:	97 f9       	bld	r25, 7
+ 94c:	9f 67       	ori	r25, 0x7F	; 127
+ 94e:	80 e8       	ldi	r24, 0x80	; 128
+ 950:	70 e0       	ldi	r23, 0x00	; 0
+ 952:	60 e0       	ldi	r22, 0x00	; 0
+ 954:	08 95       	ret
+
+00000956 <__fp_nan>:
+ 956:	9f ef       	ldi	r25, 0xFF	; 255
+ 958:	80 ec       	ldi	r24, 0xC0	; 192
+ 95a:	08 95       	ret
+
+0000095c <__fp_pscA>:
+ 95c:	00 24       	eor	r0, r0
+ 95e:	0a 94       	dec	r0
+ 960:	16 16       	cp	r1, r22
+ 962:	17 06       	cpc	r1, r23
+ 964:	18 06       	cpc	r1, r24
+ 966:	09 06       	cpc	r0, r25
+ 968:	08 95       	ret
+
+0000096a <__fp_pscB>:
+ 96a:	00 24       	eor	r0, r0
+ 96c:	0a 94       	dec	r0
+ 96e:	12 16       	cp	r1, r18
+ 970:	13 06       	cpc	r1, r19
+ 972:	14 06       	cpc	r1, r20
+ 974:	05 06       	cpc	r0, r21
+ 976:	08 95       	ret
+
+00000978 <__fp_round>:
+ 978:	09 2e       	mov	r0, r25
+ 97a:	03 94       	inc	r0
+ 97c:	00 0c       	add	r0, r0
+ 97e:	11 f4       	brne	.+4      	; 0x984 <__fp_round+0xc>
+ 980:	88 23       	and	r24, r24
+ 982:	52 f0       	brmi	.+20     	; 0x998 <__fp_round+0x20>
+ 984:	bb 0f       	add	r27, r27
+ 986:	40 f4       	brcc	.+16     	; 0x998 <__fp_round+0x20>
+ 988:	bf 2b       	or	r27, r31
+ 98a:	11 f4       	brne	.+4      	; 0x990 <__fp_round+0x18>
+ 98c:	60 ff       	sbrs	r22, 0
+ 98e:	04 c0       	rjmp	.+8      	; 0x998 <__fp_round+0x20>
+ 990:	6f 5f       	subi	r22, 0xFF	; 255
+ 992:	7f 4f       	sbci	r23, 0xFF	; 255
+ 994:	8f 4f       	sbci	r24, 0xFF	; 255
+ 996:	9f 4f       	sbci	r25, 0xFF	; 255
+ 998:	08 95       	ret
+
+0000099a <__divmodhi4>:
+ 99a:	97 fb       	bst	r25, 7
+ 99c:	07 2e       	mov	r0, r23
+ 99e:	16 f4       	brtc	.+4      	; 0x9a4 <__divmodhi4+0xa>
+ 9a0:	00 94       	com	r0
+ 9a2:	07 d0       	rcall	.+14     	; 0x9b2 <__divmodhi4_neg1>
+ 9a4:	77 fd       	sbrc	r23, 7
+ 9a6:	09 d0       	rcall	.+18     	; 0x9ba <__divmodhi4_neg2>
+ 9a8:	0e 94 f0 04 	call	0x9e0	; 0x9e0 <__udivmodhi4>
+ 9ac:	07 fc       	sbrc	r0, 7
+ 9ae:	05 d0       	rcall	.+10     	; 0x9ba <__divmodhi4_neg2>
+ 9b0:	3e f4       	brtc	.+14     	; 0x9c0 <__divmodhi4_exit>
+
+000009b2 <__divmodhi4_neg1>:
+ 9b2:	90 95       	com	r25
+ 9b4:	81 95       	neg	r24
+ 9b6:	9f 4f       	sbci	r25, 0xFF	; 255
+ 9b8:	08 95       	ret
+
+000009ba <__divmodhi4_neg2>:
+ 9ba:	70 95       	com	r23
+ 9bc:	61 95       	neg	r22
+ 9be:	7f 4f       	sbci	r23, 0xFF	; 255
+
+000009c0 <__divmodhi4_exit>:
+ 9c0:	08 95       	ret
+
+000009c2 <__umulhisi3>:
+ 9c2:	a2 9f       	mul	r26, r18
+ 9c4:	b0 01       	movw	r22, r0
+ 9c6:	b3 9f       	mul	r27, r19
+ 9c8:	c0 01       	movw	r24, r0
+ 9ca:	a3 9f       	mul	r26, r19
+ 9cc:	70 0d       	add	r23, r0
+ 9ce:	81 1d       	adc	r24, r1
+ 9d0:	11 24       	eor	r1, r1
+ 9d2:	91 1d       	adc	r25, r1
+ 9d4:	b2 9f       	mul	r27, r18
+ 9d6:	70 0d       	add	r23, r0
+ 9d8:	81 1d       	adc	r24, r1
+ 9da:	11 24       	eor	r1, r1
+ 9dc:	91 1d       	adc	r25, r1
+ 9de:	08 95       	ret
+
+000009e0 <__udivmodhi4>:
+ 9e0:	aa 1b       	sub	r26, r26
+ 9e2:	bb 1b       	sub	r27, r27
+ 9e4:	51 e1       	ldi	r21, 0x11	; 17
+ 9e6:	07 c0       	rjmp	.+14     	; 0x9f6 <__udivmodhi4_ep>
+
+000009e8 <__udivmodhi4_loop>:
+ 9e8:	aa 1f       	adc	r26, r26
+ 9ea:	bb 1f       	adc	r27, r27
+ 9ec:	a6 17       	cp	r26, r22
+ 9ee:	b7 07       	cpc	r27, r23
+ 9f0:	10 f0       	brcs	.+4      	; 0x9f6 <__udivmodhi4_ep>
+ 9f2:	a6 1b       	sub	r26, r22
+ 9f4:	b7 0b       	sbc	r27, r23
+
+000009f6 <__udivmodhi4_ep>:
+ 9f6:	88 1f       	adc	r24, r24
+ 9f8:	99 1f       	adc	r25, r25
+ 9fa:	5a 95       	dec	r21
+ 9fc:	a9 f7       	brne	.-22     	; 0x9e8 <__udivmodhi4_loop>
+ 9fe:	80 95       	com	r24
+ a00:	90 95       	com	r25
+ a02:	bc 01       	movw	r22, r24
+ a04:	cd 01       	movw	r24, r26
+ a06:	08 95       	ret
+
+00000a08 <_exit>:
+ a08:	f8 94       	cli
+
+00000a0a <__stop_program>:
+ a0a:	ff cf       	rjmp	.-2      	; 0xa0a <__stop_program>
